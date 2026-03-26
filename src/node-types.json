@@ -3793,15 +3793,7 @@
           "named": true
         },
         {
-          "type": "function_definition",
-          "named": true
-        },
-        {
           "type": "import_statement",
-          "named": true
-        },
-        {
-          "type": "macro_definition",
           "named": true
         },
         {
@@ -3810,10 +3802,6 @@
         },
         {
           "type": "opaque_declaration",
-          "named": true
-        },
-        {
-          "type": "private_function_definition",
           "named": true
         },
         {

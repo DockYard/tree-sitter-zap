@@ -69,10 +69,10 @@ defmodule Factorial do
   def factorial(n :: i64) :: i64 do
     n * factorial(n - 1)
   end
-end
 
-def main() do
-  Factorial.factorial(10)
+  def main() do
+    factorial(10)
+  end
 end
 ```
 
@@ -107,14 +107,13 @@ The parser produces:
               (binary_expression
                 (identifier)
                 (additive_operator)
-                (integer))))))))
-  (function_definition
-    name: (identifier)
-    body: (body
-      (qualified_call
-        module: (module_path (module_name))
-        name: (identifier)
-        (argument_list (integer))))))
+                (integer)))))))
+    (function_definition
+      name: (identifier)
+      body: (body
+        (function_call
+          name: (identifier)
+          (argument_list (integer)))))))
 ```
 
 ## Project Structure

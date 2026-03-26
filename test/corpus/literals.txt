@@ -2,117 +2,141 @@
 Integer literals
 ================================================================================
 
-def main() do
-  42
-  1_000_000
-  0xFF
+defmodule App do
+  def main() do
+    42
+    1_000_000
+    0xFF
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body
-      (integer)
-      (integer)
-      (integer))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body
+        (integer)
+        (integer)
+        (integer)))))
 
 ================================================================================
 String with interpolation
 ================================================================================
 
-def main() do
-  "Hello #{name}!"
+defmodule App do
+  def main() do
+    "Hello #{name}!"
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body
-      (string
-        (string_content)
-        (string_interpolation (identifier))
-        (string_content)))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body
+        (string
+          (string_content)
+          (string_interpolation (identifier))
+          (string_content))))))
 
 ================================================================================
 Atom literals
 ================================================================================
 
-def main() do
-  :ok
-  :error
+defmodule App do
+  def main() do
+    :ok
+    :error
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body
-      (atom)
-      (atom))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body
+        (atom)
+        (atom)))))
 
 ================================================================================
 List with cons
 ================================================================================
 
-def main() do
-  [1, 2, 3]
-  [h | t]
+defmodule App do
+  def main() do
+    [1, 2, 3]
+    [h | t]
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body
-      (list (integer) (integer) (integer))
-      (list (identifier) (identifier)))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body
+        (list (integer) (integer) (integer))
+        (list (identifier) (identifier))))))
 
 ================================================================================
 Map literal
 ================================================================================
 
-def main() do
-  %{x: 1, y: 2}
+defmodule App do
+  def main() do
+    %{x: 1, y: 2}
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body
-      (map_literal
-        (struct_field_value
-          key: (identifier)
-          value: (integer))
-        (struct_field_value
-          key: (identifier)
-          value: (integer))))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body
+        (map_literal
+          (struct_field_value
+            key: (identifier)
+            value: (integer))
+          (struct_field_value
+            key: (identifier)
+            value: (integer)))))))
 
 ================================================================================
 Binary literal with type specs
 ================================================================================
 
-def main() do
-  <<">"::String, rest::String>>
+defmodule App do
+  def main() do
+    <<">"::String, rest::String>>
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body
-      (binary_literal
-        (binary_segment
-          (string (string_content))
-          (binary_type_spec (module_name)))
-        (binary_segment
-          (identifier)
-          (binary_type_spec (module_name)))))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body
+        (binary_literal
+          (binary_segment
+            (string (string_content))
+            (binary_type_spec (module_name)))
+          (binary_segment
+            (identifier)
+            (binary_type_spec (module_name))))))))

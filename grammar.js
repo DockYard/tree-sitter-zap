@@ -35,9 +35,6 @@ module.exports = grammar({
     _top_level: ($) =>
       choice(
         $.module_definition,
-        $.function_definition,
-        $.private_function_definition,
-        $.macro_definition,
         $.struct_definition,
         $.enum_definition,
         $.type_declaration,

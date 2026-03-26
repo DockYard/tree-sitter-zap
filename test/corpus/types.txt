@@ -60,43 +60,51 @@ end
 Union return type
 ================================================================================
 
-def check(x :: i64) :: String | nil do
-  "ok"
+defmodule App do
+  def check(x :: i64) :: String | nil do
+    "ok"
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    (parameter_list
-      (parameter
-        name: (identifier)
-        type: (type_expression (type_name))))
-    return_type: (type_expression
-      (union_type
-        (type_name)
-        (literal_type)))
-    body: (body (string (string_content)))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      (parameter_list
+        (parameter
+          name: (identifier)
+          type: (type_expression (type_name))))
+      return_type: (type_expression
+        (union_type
+          (type_name)
+          (literal_type)))
+      body: (body (string (string_content))))))
 
 ================================================================================
 Tuple return type
 ================================================================================
 
-def pair() :: {i64, String} do
-  {1, "one"}
+defmodule Tuples do
+  def pair() :: {i64, String} do
+    {1, "one"}
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    return_type: (type_expression
-      (tuple_type
-        (type_expression (type_name))
-        (type_expression (type_name))))
-    body: (body
-      (tuple
-        (integer)
-        (string (string_content))))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      return_type: (type_expression
+        (tuple_type
+          (type_expression (type_name))
+          (type_expression (type_name))))
+      body: (body
+        (tuple
+          (integer)
+          (string (string_content)))))))

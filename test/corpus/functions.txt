@@ -1,90 +1,106 @@
 ================================================================================
-Top-level function
+Simple function
 ================================================================================
 
-def main() do
-  42
+defmodule App do
+  def main() do
+    42
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body (integer))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body (integer)))))
 
 ================================================================================
 Function with pattern matching parameter
 ================================================================================
 
-def factorial(0 :: i64) :: i64 do
-  1
+defmodule Factorial do
+  def factorial(0 :: i64) :: i64 do
+    1
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    (parameter_list
-      (parameter
-        name: (integer)
-        type: (type_expression (type_name))))
-    return_type: (type_expression (type_name))
-    body: (body (integer))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      (parameter_list
+        (parameter
+          name: (integer)
+          type: (type_expression (type_name))))
+      return_type: (type_expression (type_name))
+      body: (body (integer)))))
 
 ================================================================================
 Function with guard
 ================================================================================
 
-def classify(n :: i64) :: String if n > 0 do
-  "positive"
+defmodule Guards do
+  def classify(n :: i64) :: String if n > 0 do
+    "positive"
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    (parameter_list
-      (parameter
-        name: (identifier)
-        type: (type_expression (type_name))))
-    return_type: (type_expression (type_name))
-    guard: (binary_expression
-      (identifier)
-      (comparison_operator)
-      (integer))
-    body: (body (string (string_content)))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      (parameter_list
+        (parameter
+          name: (identifier)
+          type: (type_expression (type_name))))
+      return_type: (type_expression (type_name))
+      guard: (binary_expression
+        (identifier)
+        (comparison_operator)
+        (integer))
+      body: (body (string (string_content))))))
 
 ================================================================================
 Function with default parameters
 ================================================================================
 
-def request(url :: String, method :: String = "GET") :: String do
-  method <> " " <> url
+defmodule Http do
+  def request(url :: String, method :: String = "GET") :: String do
+    method <> " " <> url
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    (parameter_list
-      (parameter
-        name: (identifier)
-        type: (type_expression (type_name)))
-      (parameter
-        name: (identifier)
-        type: (type_expression (type_name))
-        default: (string (string_content))))
-    return_type: (type_expression (type_name))
-    body: (body
-      (binary_expression
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      (parameter_list
+        (parameter
+          name: (identifier)
+          type: (type_expression (type_name)))
+        (parameter
+          name: (identifier)
+          type: (type_expression (type_name))
+          default: (string (string_content))))
+      return_type: (type_expression (type_name))
+      body: (body
         (binary_expression
-          (identifier)
-          (string (string_content)))
-        (identifier)))))
+          (binary_expression
+            (identifier)
+            (string (string_content)))
+          (identifier))))))
 
 ================================================================================
 Private function

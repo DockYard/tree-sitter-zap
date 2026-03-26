@@ -2,95 +2,111 @@
 Case expression
 ================================================================================
 
-def main() do
-  case result do
-    {:ok, v} -> v
-    {:error, e} -> e
-    _ -> "unknown"
+defmodule App do
+  def main() do
+    case result do
+      {:ok, v} -> v
+      {:error, e} -> e
+      _ -> "unknown"
+    end
   end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body
-      (case_expression
-        subject: (identifier)
-        (case_clause
-          pattern: (tuple (atom) (identifier))
-          body: (identifier))
-        (case_clause
-          pattern: (tuple (atom) (identifier))
-          body: (identifier))
-        (case_clause
-          pattern: (wildcard)
-          body: (string (string_content)))))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body
+        (case_expression
+          subject: (identifier)
+          (case_clause
+            pattern: (tuple (atom) (identifier))
+            body: (identifier))
+          (case_clause
+            pattern: (tuple (atom) (identifier))
+            body: (identifier))
+          (case_clause
+            pattern: (wildcard)
+            body: (string (string_content))))))))
 
 ================================================================================
 If expression
 ================================================================================
 
-def main() do
-  if x > 0 do
-    "positive"
-  else
-    "non-positive"
+defmodule App do
+  def main() do
+    if x > 0 do
+      "positive"
+    else
+      "non-positive"
+    end
   end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body
-      (if_expression
-        condition: (binary_expression
-          (identifier)
-          (comparison_operator)
-          (integer))
-        then: (body (string (string_content)))
-        else: (body (string (string_content)))))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body
+        (if_expression
+          condition: (binary_expression
+            (identifier)
+            (comparison_operator)
+            (integer))
+          then: (body (string (string_content)))
+          else: (body (string (string_content))))))))
 
 ================================================================================
 Pipe expression
 ================================================================================
 
-def main() do
-  5
-  |> double()
-  |> add_one()
+defmodule App do
+  def main() do
+    5
+    |> double()
+    |> add_one()
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body
-      (pipe_expression
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body
         (pipe_expression
-          (integer)
-          (function_call name: (identifier)))
-        (function_call name: (identifier))))))
+          (pipe_expression
+            (integer)
+            (function_call name: (identifier)))
+          (function_call name: (identifier)))))))
 
 ================================================================================
 Unwrap expression
 ================================================================================
 
-def main() do
-  check(10)!
+defmodule App do
+  def main() do
+    check(10)!
+  end
 end
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
-    name: (identifier)
-    body: (body
-      (unwrap_expression
-        (function_call
-          name: (identifier)
-          (argument_list (integer)))))))
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      body: (body
+        (unwrap_expression
+          (function_call
+            name: (identifier)
+            (argument_list (integer))))))))
