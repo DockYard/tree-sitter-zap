@@ -1,0 +1,102 @@
+================================================================================
+Struct definition
+================================================================================
+
+defstruct Point do
+  x :: f64
+  y :: f64
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (struct_definition
+    name: (module_name)
+    (struct_field
+      name: (identifier)
+      type: (type_expression (type_name)))
+    (struct_field
+      name: (identifier)
+      type: (type_expression (type_name)))))
+
+================================================================================
+Struct with defaults and extends
+================================================================================
+
+defstruct Circle extends Shape do
+  radius :: f64
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (struct_definition
+    name: (module_name)
+    parent: (module_path (module_name))
+    (struct_field
+      name: (identifier)
+      type: (type_expression (type_name)))))
+
+================================================================================
+Enum definition
+================================================================================
+
+defenum Color do
+  Red
+  Green
+  Blue
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (enum_definition
+    name: (module_name)
+    (enum_variant (module_name))
+    (enum_variant (module_name))
+    (enum_variant (module_name))))
+
+================================================================================
+Union return type
+================================================================================
+
+def check(x :: i64) :: String | nil do
+  "ok"
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list
+      (parameter
+        name: (identifier)
+        type: (type_expression (type_name))))
+    return_type: (type_expression
+      (union_type
+        (type_name)
+        (literal_type)))
+    body: (body (string (string_content)))))
+
+================================================================================
+Tuple return type
+================================================================================
+
+def pair() :: {i64, String} do
+  {1, "one"}
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    return_type: (type_expression
+      (tuple_type
+        (type_expression (type_name))
+        (type_expression (type_name))))
+    body: (body
+      (tuple
+        (integer)
+        (string (string_content))))))

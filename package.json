@@ -1,0 +1,29 @@
+{
+  "name": "tree-sitter-zap",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for the Zap programming language",
+  "main": "bindings/node",
+  "scripts": {
+    "build": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse"
+  },
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "zap"
+  ],
+  "author": "Brian Cardarella",
+  "license": "MIT",
+  "dependencies": {
+    "tree-sitter-cli": "^0.26.7"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.zap",
+      "file-types": ["zap"],
+      "injection-regex": "^zap$",
+      "highlights": "queries/highlights.scm"
+    }
+  ]
+}

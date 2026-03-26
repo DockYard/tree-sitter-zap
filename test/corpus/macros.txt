@@ -1,0 +1,31 @@
+================================================================================
+Macro with quote/unquote
+================================================================================
+
+defmodule Math do
+  defmacro double(value :: i64) :: i64 do
+    quote do
+      unquote(value) + unquote(value)
+    end
+  end
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    name: (module_path (module_name))
+    (macro_definition
+      name: (identifier)
+      (parameter_list
+        (parameter
+          name: (identifier)
+          type: (type_expression (type_name))))
+      return_type: (type_expression (type_name))
+      body: (body
+        (quote_expression
+          (body
+            (binary_expression
+              (unquote_expression (identifier))
+              (additive_operator)
+              (unquote_expression (identifier)))))))))

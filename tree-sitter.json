@@ -1,0 +1,30 @@
+{
+  "grammars": [
+    {
+      "name": "zap",
+      "camelcase": "Zap",
+      "scope": "source.zap",
+      "path": ".",
+      "file-types": ["zap"],
+      "injection-regex": "^zap$",
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for the Zap programming language",
+    "authors": [
+      {
+        "name": "Brian Cardarella"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/bcardarella/tree-sitter-zap"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "node": true
+  }
+}

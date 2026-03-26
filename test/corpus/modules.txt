@@ -1,0 +1,63 @@
+================================================================================
+Simple module
+================================================================================
+
+defmodule Math do
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    name: (module_path (module_name))))
+
+================================================================================
+Module with function
+================================================================================
+
+defmodule Runner do
+  def hello(word :: String) :: String do
+    "Hello" <> " " <> word
+  end
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    name: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      (parameter_list
+        (parameter
+          name: (identifier)
+          type: (type_expression (type_name))))
+      return_type: (type_expression (type_name))
+      body: (body
+        (binary_expression
+          (binary_expression
+            (string (string_content))
+            (string (string_content)))
+          (identifier))))))
+
+================================================================================
+Module with extends
+================================================================================
+
+defmodule Dog extends Animal do
+  def speak() :: String do
+    "woof"
+  end
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    name: (module_path (module_name))
+    parent: (module_path (module_name))
+    (function_definition
+      name: (identifier)
+      return_type: (type_expression (type_name))
+      body: (body
+        (string (string_content))))))

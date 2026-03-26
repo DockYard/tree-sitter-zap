@@ -1,0 +1,107 @@
+================================================================================
+Top-level function
+================================================================================
+
+def main() do
+  42
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    body: (body (integer))))
+
+================================================================================
+Function with pattern matching parameter
+================================================================================
+
+def factorial(0 :: i64) :: i64 do
+  1
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list
+      (parameter
+        name: (integer)
+        type: (type_expression (type_name))))
+    return_type: (type_expression (type_name))
+    body: (body (integer))))
+
+================================================================================
+Function with guard
+================================================================================
+
+def classify(n :: i64) :: String if n > 0 do
+  "positive"
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list
+      (parameter
+        name: (identifier)
+        type: (type_expression (type_name))))
+    return_type: (type_expression (type_name))
+    guard: (binary_expression
+      (identifier)
+      (comparison_operator)
+      (integer))
+    body: (body (string (string_content)))))
+
+================================================================================
+Function with default parameters
+================================================================================
+
+def request(url :: String, method :: String = "GET") :: String do
+  method <> " " <> url
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list
+      (parameter
+        name: (identifier)
+        type: (type_expression (type_name)))
+      (parameter
+        name: (identifier)
+        type: (type_expression (type_name))
+        default: (string (string_content))))
+    return_type: (type_expression (type_name))
+    body: (body
+      (binary_expression
+        (binary_expression
+          (identifier)
+          (string (string_content)))
+        (identifier)))))
+
+================================================================================
+Private function
+================================================================================
+
+defmodule Foo do
+  defp helper() :: i64 do
+    0
+  end
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    name: (module_path (module_name))
+    (private_function_definition
+      name: (identifier)
+      return_type: (type_expression (type_name))
+      body: (body (integer)))))
