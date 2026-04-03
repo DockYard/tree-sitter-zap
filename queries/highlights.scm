@@ -1,13 +1,11 @@
 ; Keywords
 [
-  "defmodule"
-  "def"
-  "defp"
-  "defmacro"
-  "defstruct"
-  "defenum"
-  "do"
-  "end"
+  "module"
+  "fn"
+  "macro"
+  "struct"
+  "union"
+  "extends"
   "if"
   "else"
   "case"
@@ -19,25 +17,36 @@
   "alias"
   "type"
   "opaque"
-  "extends"
-  "when"
   "and"
   "or"
   "not"
   "rem"
   "panic"
+  "shared"
+  "unique"
+  "borrowed"
+] @keyword
+
+; Import/alias filter tokens
+[
+  "only:"
+  "except:"
+  "as:"
+  "type:"
 ] @keyword
 
 ; Operators
 [
   "="
   "|>"
+  "~>"
   "<>"
   "<-"
   "::"
   "->"
   "!"
   "^"
+  "@"
 ] @operator
 
 (comparison_operator) @operator
@@ -67,10 +76,10 @@
 ; Function definitions
 (function_definition
   name: (identifier) @function)
-(private_function_definition
-  name: (identifier) @function)
 (macro_definition
   name: (identifier) @function.macro)
+(macro_definition
+  name: _ @function.macro)
 
 ; Function calls
 (function_call
@@ -81,9 +90,15 @@
 ; Type annotations
 (type_name) @type.builtin
 
+; Visibility
+(visibility_modifier) @keyword
+
+; Ownership
+(ownership_modifier) @keyword
+
 ; Parameters
 (parameter
-  name: (identifier) @variable.parameter)
+  pattern: (identifier) @variable.parameter)
 
 ; Struct fields
 (struct_field
@@ -93,9 +108,21 @@
 (field_access
   field: (identifier) @property)
 
-; Enum variants
-(enum_variant
-  (module_name) @constant)
+; Union variants
+(union_variant
+  name: (module_name) @constant)
+
+; Attributes
+(attribute_declaration
+  name: (identifier) @attribute)
+(attribute_reference
+  name: (identifier) @attribute)
+(intrinsic_call
+  name: (identifier) @function.builtin)
+
+; Function references
+(function_reference
+  name: (identifier) @function)
 
 ; Wildcard
 (wildcard) @variable.builtin
@@ -119,3 +146,4 @@
 ] @punctuation.delimiter
 
 "%{" @punctuation.bracket
+"%" @punctuation.bracket

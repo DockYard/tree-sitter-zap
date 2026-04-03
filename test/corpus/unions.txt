@@ -1,0 +1,74 @@
+================================================================================
+Union with error pipe
+================================================================================
+
+pub module App {
+  pub union ParseResult {
+    Ok :: String
+    Error :: Atom
+  }
+
+  pub fn process(input :: String) -> String {
+    parse(input)
+    |> format()
+    ~> {
+      :unknown -> "error"
+    }
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (union_definition
+      (visibility_modifier)
+      name: (module_name)
+      (union_variant
+        name: (module_name)
+        type: (type_expression (type_name)))
+      (union_variant
+        name: (module_name)
+        type: (type_expression (type_name))))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      (parameter_list
+        (parameter
+          pattern: (identifier)
+          type: (type_expression (type_name))))
+      return_type: (type_expression (type_name))
+      body: (body
+        (error_pipe_expression
+          (pipe_expression
+            (function_call
+              name: (identifier)
+              (argument_list (identifier)))
+            (function_call name: (identifier)))
+          (case_clause
+            pattern: (atom)
+            body: (string (string_content))))))))
+
+================================================================================
+Top-level union
+================================================================================
+
+pub union Direction {
+  North
+  South
+  East
+  West
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (union_definition
+    (visibility_modifier)
+    name: (module_name)
+    (union_variant name: (module_name))
+    (union_variant name: (module_name))
+    (union_variant name: (module_name))
+    (union_variant name: (module_name))))

@@ -2,20 +2,22 @@
 Integer literals
 ================================================================================
 
-defmodule App do
-  def main() do
+pub module App {
+  pub fn main() {
     42
     1_000_000
     0xFF
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body
         (integer)
@@ -26,18 +28,20 @@ end
 String with interpolation
 ================================================================================
 
-defmodule App do
-  def main() do
+pub module App {
+  pub fn main() {
     "Hello #{name}!"
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body
         (string
@@ -49,19 +53,21 @@ end
 Atom literals
 ================================================================================
 
-defmodule App do
-  def main() do
+pub module App {
+  pub fn main() {
     :ok
     :error
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body
         (atom)
@@ -71,19 +77,21 @@ end
 List with cons
 ================================================================================
 
-defmodule App do
-  def main() do
+pub module App {
+  pub fn main() {
     [1, 2, 3]
     [h | t]
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body
         (list (integer) (integer) (integer))
@@ -93,18 +101,20 @@ end
 Map literal
 ================================================================================
 
-defmodule App do
-  def main() do
+pub module App {
+  pub fn main() {
     %{x: 1, y: 2}
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body
         (map_literal
@@ -119,18 +129,20 @@ end
 Binary literal with type specs
 ================================================================================
 
-defmodule App do
-  def main() do
+pub module App {
+  pub fn main() {
     <<">"::String, rest::String>>
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body
         (binary_literal
@@ -140,3 +152,29 @@ end
           (binary_segment
             (identifier)
             (binary_type_spec (module_name))))))))
+
+================================================================================
+Boolean and nil literals
+================================================================================
+
+pub module App {
+  pub fn main() {
+    true
+    false
+    nil
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      body: (body
+        (boolean)
+        (boolean)
+        (nil)))))

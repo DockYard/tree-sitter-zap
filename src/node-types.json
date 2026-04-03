@@ -39,11 +39,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -67,6 +67,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -79,6 +83,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -88,6 +96,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -132,6 +144,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -174,11 +190,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -202,6 +218,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -214,6 +234,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -223,6 +247,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -270,6 +298,10 @@
           "named": true
         },
         {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -301,6 +333,194 @@
     }
   },
   {
+    "type": "attribute_declaration",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_expression",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "attribute_reference",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "binary_literal",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "case_expression",
+            "named": true
+          },
+          {
+            "type": "cond_expression",
+            "named": true
+          },
+          {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
+            "type": "field_access",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "map_literal",
+            "named": true
+          },
+          {
+            "type": "module_access",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "panic_expression",
+            "named": true
+          },
+          {
+            "type": "paren_expression",
+            "named": true
+          },
+          {
+            "type": "pin_expression",
+            "named": true
+          },
+          {
+            "type": "pipe_expression",
+            "named": true
+          },
+          {
+            "type": "qualified_call",
+            "named": true
+          },
+          {
+            "type": "quote_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "type_annotation",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unwrap_expression",
+            "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
+          },
+          {
+            "type": "with_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "attribute_reference",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "binary_expression",
     "named": true,
     "fields": {},
@@ -313,11 +533,11 @@
           "named": true
         },
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -345,6 +565,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -357,6 +581,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -366,6 +594,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -414,6 +646,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -475,6 +711,10 @@
           "named": true
         },
         {
+          "type": "attribute_reference",
+          "named": true
+        },
+        {
           "type": "binary_literal",
           "named": true
         },
@@ -507,6 +747,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -516,6 +760,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -559,6 +807,10 @@
           "named": true
         },
         {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -586,11 +838,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -614,6 +866,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -626,6 +882,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -635,6 +895,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -679,6 +943,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -752,6 +1020,10 @@
           "named": true
         },
         {
+          "type": "attribute_reference",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -772,6 +1044,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -784,6 +1060,14 @@
           "named": true
         },
         {
+          "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -792,11 +1076,23 @@
           "named": true
         },
         {
+          "type": "import_statement",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
         {
+          "type": "intrinsic_call",
+          "named": true
+        },
+        {
           "type": "list",
+          "named": true
+        },
+        {
+          "type": "macro_definition",
           "named": true
         },
         {
@@ -837,6 +1133,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -884,11 +1184,11 @@
         "required": true,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -912,6 +1212,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -924,6 +1228,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -933,6 +1241,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -977,6 +1289,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
             "named": true
           },
           {
@@ -1014,11 +1330,11 @@
         "required": false,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -1042,6 +1358,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -1054,6 +1374,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -1063,6 +1387,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -1107,6 +1435,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
             "named": true
           },
           {
@@ -1144,11 +1476,11 @@
         "required": true,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -1172,6 +1504,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -1184,6 +1520,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -1193,6 +1533,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -1237,6 +1581,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
             "named": true
           },
           {
@@ -1268,6 +1616,16 @@
             "named": true
           }
         ]
+      },
+      "type_annotation": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_expression",
+            "named": true
+          }
+        ]
       }
     }
   },
@@ -1280,11 +1638,11 @@
         "required": true,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -1308,6 +1666,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -1320,6 +1682,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -1329,6 +1695,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -1373,6 +1743,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
             "named": true
           },
           {
@@ -1431,11 +1805,11 @@
         "required": true,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -1459,6 +1833,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -1471,6 +1849,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -1480,6 +1862,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -1524,6 +1910,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
             "named": true
           },
           {
@@ -1561,11 +1951,11 @@
         "required": true,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -1589,6 +1979,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -1601,6 +1995,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -1610,6 +2008,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -1654,6 +2056,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
             "named": true
           },
           {
@@ -1704,71 +2110,19 @@
     }
   },
   {
-    "type": "enum_definition",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "module_name",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "enum_variant",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "enum_variant",
+    "type": "error_pipe_expression",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "module_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "field_access",
-    "named": true,
-    "fields": {
-      "field": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -1784,11 +2138,19 @@
           "named": true
         },
         {
+          "type": "case_clause",
+          "named": true
+        },
+        {
           "type": "case_expression",
           "named": true
         },
         {
           "type": "cond_expression",
+          "named": true
+        },
+        {
+          "type": "error_pipe_expression",
           "named": true
         },
         {
@@ -1804,6 +2166,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -1813,6 +2179,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -1857,6 +2227,172 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "type_annotation",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unwrap_expression",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        },
+        {
+          "type": "with_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "field_access",
+    "named": true,
+    "fields": {
+      "field": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "attribute_reference",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "binary_literal",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "case_expression",
+          "named": true
+        },
+        {
+          "type": "cond_expression",
+          "named": true
+        },
+        {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
+          "type": "field_access",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "map_literal",
+          "named": true
+        },
+        {
+          "type": "module_access",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "panic_expression",
+          "named": true
+        },
+        {
+          "type": "paren_expression",
+          "named": true
+        },
+        {
+          "type": "pin_expression",
+          "named": true
+        },
+        {
+          "type": "pipe_expression",
+          "named": true
+        },
+        {
+          "type": "qualified_call",
+          "named": true
+        },
+        {
+          "type": "quote_expression",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -1935,11 +2471,11 @@
         "required": false,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -1963,6 +2499,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -1975,6 +2515,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -1984,6 +2528,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -2028,6 +2576,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
             "named": true
           },
           {
@@ -2082,14 +2634,54 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "parameter_list",
           "named": true
+        },
+        {
+          "type": "visibility_modifier",
+          "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "function_reference",
+    "named": true,
+    "fields": {
+      "arity": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "module": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "module_path",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2116,11 +2708,11 @@
         "required": true,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -2144,6 +2736,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -2156,6 +2752,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -2165,6 +2765,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -2209,6 +2813,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
             "named": true
           },
           {
@@ -2278,6 +2886,10 @@
         {
           "type": "integer",
           "named": true
+        },
+        {
+          "type": "module_name",
+          "named": true
         }
       ]
     }
@@ -2309,6 +2921,32 @@
     }
   },
   {
+    "type": "intrinsic_call",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "argument_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "list",
     "named": true,
     "fields": {},
@@ -2317,11 +2955,11 @@
       "required": false,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -2345,6 +2983,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -2357,6 +2999,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -2366,6 +3012,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -2410,6 +3060,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -2500,8 +3154,20 @@
         "required": true,
         "types": [
           {
+            "type": "cond",
+            "named": false
+          },
+          {
             "type": "identifier",
             "named": true
+          },
+          {
+            "type": "if",
+            "named": false
+          },
+          {
+            "type": "with",
+            "named": false
           }
         ]
       },
@@ -2517,11 +3183,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "parameter_list",
+          "named": true
+        },
+        {
+          "type": "visibility_modifier",
           "named": true
         }
       ]
@@ -2536,11 +3206,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -2564,6 +3234,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -2576,6 +3250,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -2585,6 +3263,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -2629,6 +3311,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -2749,7 +3435,7 @@
           "named": true
         },
         {
-          "type": "enum_definition",
+          "type": "attribute_declaration",
           "named": true
         },
         {
@@ -2769,15 +3455,19 @@
           "named": true
         },
         {
-          "type": "private_function_definition",
-          "named": true
-        },
-        {
           "type": "struct_definition",
           "named": true
         },
         {
           "type": "type_declaration",
+          "named": true
+        },
+        {
+          "type": "union_definition",
+          "named": true
+        },
+        {
+          "type": "visibility_modifier",
           "named": true
         }
       ]
@@ -2832,7 +3522,26 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "type_variable",
+          "named": true
+        },
+        {
+          "type": "visibility_modifier",
+          "named": true
+        }
+      ]
     }
+  },
+  {
+    "type": "ownership_modifier",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "panic_expression",
@@ -2843,11 +3552,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -2871,6 +3580,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -2883,6 +3596,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -2892,6 +3609,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -2939,6 +3660,10 @@
           "named": true
         },
         {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -2978,11 +3703,11 @@
         "required": false,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -3006,6 +3731,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -3018,6 +3747,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -3027,6 +3760,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -3074,6 +3811,10 @@
             "named": true
           },
           {
+            "type": "struct_expression",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -3103,7 +3844,7 @@
           }
         ]
       },
-      "name": {
+      "pattern": {
         "multiple": true,
         "required": true,
         "types": [
@@ -3113,6 +3854,10 @@
           },
           {
             "type": "atom",
+            "named": true
+          },
+          {
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -3144,6 +3889,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -3153,6 +3902,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -3200,6 +3953,10 @@
             "named": true
           },
           {
+            "type": "struct_expression",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -3227,6 +3984,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "ownership_modifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -3272,11 +4039,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -3300,6 +4067,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -3312,6 +4083,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -3321,6 +4096,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -3365,6 +4144,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -3422,11 +4205,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -3450,6 +4233,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -3462,6 +4249,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -3471,6 +4262,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -3518,6 +4313,10 @@
           "named": true
         },
         {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -3549,182 +4348,6 @@
     }
   },
   {
-    "type": "private_function_definition",
-    "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "body",
-            "named": true
-          }
-        ]
-      },
-      "guard": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "assignment",
-            "named": true
-          },
-          {
-            "type": "atom",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "binary_literal",
-            "named": true
-          },
-          {
-            "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "case_expression",
-            "named": true
-          },
-          {
-            "type": "cond_expression",
-            "named": true
-          },
-          {
-            "type": "field_access",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "if_expression",
-            "named": true
-          },
-          {
-            "type": "integer",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "map_literal",
-            "named": true
-          },
-          {
-            "type": "module_access",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "panic_expression",
-            "named": true
-          },
-          {
-            "type": "paren_expression",
-            "named": true
-          },
-          {
-            "type": "pin_expression",
-            "named": true
-          },
-          {
-            "type": "pipe_expression",
-            "named": true
-          },
-          {
-            "type": "qualified_call",
-            "named": true
-          },
-          {
-            "type": "quote_expression",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "type_annotation",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "unquote_expression",
-            "named": true
-          },
-          {
-            "type": "unwrap_expression",
-            "named": true
-          },
-          {
-            "type": "wildcard",
-            "named": true
-          },
-          {
-            "type": "with_expression",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "return_type": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "type_expression",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "parameter_list",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "qualified_call",
     "named": true,
     "fields": {
@@ -3744,6 +4367,10 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "module_name",
             "named": true
           }
         ]
@@ -3789,10 +4416,6 @@
           "named": true
         },
         {
-          "type": "enum_definition",
-          "named": true
-        },
-        {
           "type": "import_statement",
           "named": true
         },
@@ -3810,6 +4433,10 @@
         },
         {
           "type": "type_declaration",
+          "named": true
+        },
+        {
+          "type": "union_definition",
           "named": true
         }
       ]
@@ -3847,11 +4474,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -3875,6 +4502,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -3887,6 +4518,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -3896,6 +4531,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -3943,6 +4582,10 @@
           "named": true
         },
         {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -3982,7 +4625,7 @@
         "required": true,
         "types": [
           {
-            "type": "module_name",
+            "type": "module_path",
             "named": true
           }
         ]
@@ -4005,6 +4648,36 @@
         {
           "type": "struct_field",
           "named": true
+        },
+        {
+          "type": "visibility_modifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "struct_expression",
+    "named": true,
+    "fields": {
+      "module": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "module_path",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "struct_field_value",
+          "named": true
         }
       ]
     }
@@ -4018,11 +4691,11 @@
         "required": false,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -4046,6 +4719,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -4058,6 +4735,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -4067,6 +4748,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -4111,6 +4796,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
             "named": true
           },
           {
@@ -4184,11 +4873,11 @@
         "required": true,
         "types": [
           {
-            "type": "assignment",
+            "type": "atom",
             "named": true
           },
           {
-            "type": "atom",
+            "type": "attribute_reference",
             "named": true
           },
           {
@@ -4212,6 +4901,10 @@
             "named": true
           },
           {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
             "type": "field_access",
             "named": true
           },
@@ -4224,6 +4917,10 @@
             "named": true
           },
           {
+            "type": "function_reference",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -4233,6 +4930,10 @@
           },
           {
             "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
             "named": true
           },
           {
@@ -4280,6 +4981,10 @@
             "named": true
           },
           {
+            "type": "struct_expression",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -4320,11 +5025,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -4348,6 +5053,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -4360,6 +5069,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -4369,6 +5082,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -4413,6 +5130,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -4481,11 +5202,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -4509,6 +5230,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -4521,6 +5246,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -4530,6 +5259,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -4574,6 +5307,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -4638,6 +5375,10 @@
       "types": [
         {
           "type": "type_variable",
+          "named": true
+        },
+        {
+          "type": "visibility_modifier",
           "named": true
         }
       ]
@@ -4727,11 +5468,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -4755,6 +5496,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -4767,6 +5512,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -4776,6 +5525,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -4823,6 +5576,10 @@
           "named": true
         },
         {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -4848,6 +5605,36 @@
         },
         {
           "type": "with_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "union_definition",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "module_name",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "union_variant",
+          "named": true
+        },
+        {
+          "type": "visibility_modifier",
           "named": true
         }
       ]
@@ -4905,6 +5692,32 @@
     }
   },
   {
+    "type": "union_variant",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "module_name",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "unquote_expression",
     "named": true,
     "fields": {},
@@ -4913,11 +5726,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -4941,6 +5754,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -4953,6 +5770,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -4962,6 +5783,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -5006,6 +5831,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -5048,11 +5877,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -5076,6 +5905,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -5088,6 +5921,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -5097,6 +5934,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -5141,6 +5982,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -5198,11 +6043,11 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "atom",
+          "type": "attribute_reference",
           "named": true
         },
         {
@@ -5226,6 +6071,10 @@
           "named": true
         },
         {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
           "type": "field_access",
           "named": true
         },
@@ -5238,6 +6087,10 @@
           "named": true
         },
         {
+          "type": "function_reference",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -5247,6 +6100,10 @@
         },
         {
           "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
           "named": true
         },
         {
@@ -5291,6 +6148,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
           "named": true
         },
         {
@@ -5368,6 +6229,10 @@
   },
   {
     "type": "#{",
+    "named": false
+  },
+  {
+    "type": "%",
     "named": false
   },
   {
@@ -5463,6 +6328,10 @@
     "named": false
   },
   {
+    "type": "@",
+    "named": false
+  },
+  {
     "type": "Atom",
     "named": false
   },
@@ -5511,6 +6380,10 @@
     "named": true
   },
   {
+    "type": "borrowed",
+    "named": false
+  },
+  {
     "type": "case",
     "named": false
   },
@@ -5524,39 +6397,7 @@
     "named": false
   },
   {
-    "type": "def",
-    "named": false
-  },
-  {
-    "type": "defenum",
-    "named": false
-  },
-  {
-    "type": "defmacro",
-    "named": false
-  },
-  {
-    "type": "defmodule",
-    "named": false
-  },
-  {
-    "type": "defp",
-    "named": false
-  },
-  {
-    "type": "defstruct",
-    "named": false
-  },
-  {
-    "type": "do",
-    "named": false
-  },
-  {
     "type": "else",
-    "named": false
-  },
-  {
-    "type": "end",
     "named": false
   },
   {
@@ -5592,6 +6433,10 @@
     "named": true
   },
   {
+    "type": "fn",
+    "named": false
+  },
+  {
     "type": "i16",
     "named": false
   },
@@ -5625,6 +6470,14 @@
   },
   {
     "type": "isize",
+    "named": false
+  },
+  {
+    "type": "macro",
+    "named": false
+  },
+  {
+    "type": "module",
     "named": false
   },
   {
@@ -5664,8 +6517,16 @@
     "named": false
   },
   {
+    "type": "shared",
+    "named": false
+  },
+  {
     "type": "string_content",
     "named": true
+  },
+  {
+    "type": "struct",
+    "named": false
   },
   {
     "type": "true",
@@ -5673,6 +6534,10 @@
   },
   {
     "type": "type",
+    "named": false
+  },
+  {
+    "type": "type:",
     "named": false
   },
   {
@@ -5692,6 +6557,14 @@
     "named": false
   },
   {
+    "type": "union",
+    "named": false
+  },
+  {
+    "type": "unique",
+    "named": false
+  },
+  {
     "type": "unquote",
     "named": false
   },
@@ -5700,8 +6573,8 @@
     "named": false
   },
   {
-    "type": "when",
-    "named": false
+    "type": "visibility_modifier",
+    "named": true
   },
   {
     "type": "wildcard",
@@ -5725,6 +6598,10 @@
   },
   {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "~>",
     "named": false
   }
 ]

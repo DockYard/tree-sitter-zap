@@ -2,24 +2,26 @@
 Macro with quote/unquote
 ================================================================================
 
-defmodule Math do
-  defmacro double(value :: i64) :: i64 do
-    quote do
+pub module Math {
+  pub macro double(value :: i64) -> i64 {
+    quote {
       unquote(value) + unquote(value)
-    end
-  end
-end
+    }
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (macro_definition
+      (visibility_modifier)
       name: (identifier)
       (parameter_list
         (parameter
-          name: (identifier)
+          pattern: (identifier)
           type: (type_expression (type_name))))
       return_type: (type_expression (type_name))
       body: (body

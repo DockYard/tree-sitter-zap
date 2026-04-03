@@ -2,18 +2,20 @@
 Simple function
 ================================================================================
 
-defmodule App do
-  def main() do
+pub module App {
+  pub fn main() {
     42
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body (integer)))))
 
@@ -21,22 +23,24 @@ end
 Function with pattern matching parameter
 ================================================================================
 
-defmodule Factorial do
-  def factorial(0 :: i64) :: i64 do
+pub module Factorial {
+  pub fn factorial(0 :: i64) -> i64 {
     1
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       (parameter_list
         (parameter
-          name: (integer)
+          pattern: (integer)
           type: (type_expression (type_name))))
       return_type: (type_expression (type_name))
       body: (body (integer)))))
@@ -45,22 +49,24 @@ end
 Function with guard
 ================================================================================
 
-defmodule Guards do
-  def classify(n :: i64) :: String if n > 0 do
+pub module Guards {
+  pub fn classify(n :: i64) -> String if n > 0 {
     "positive"
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       (parameter_list
         (parameter
-          name: (identifier)
+          pattern: (identifier)
           type: (type_expression (type_name))))
       return_type: (type_expression (type_name))
       guard: (binary_expression
@@ -73,25 +79,27 @@ end
 Function with default parameters
 ================================================================================
 
-defmodule Http do
-  def request(url :: String, method :: String = "GET") :: String do
+pub module Http {
+  pub fn request(url :: String, method :: String = "GET") -> String {
     method <> " " <> url
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       (parameter_list
         (parameter
-          name: (identifier)
+          pattern: (identifier)
           type: (type_expression (type_name)))
         (parameter
-          name: (identifier)
+          pattern: (identifier)
           type: (type_expression (type_name))
           default: (string (string_content))))
       return_type: (type_expression (type_name))
@@ -106,18 +114,47 @@ end
 Private function
 ================================================================================
 
-defmodule Foo do
-  defp helper() :: i64 do
+pub module Foo {
+  fn helper() -> i64 {
     0
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
-    (private_function_definition
+    (function_definition
       name: (identifier)
       return_type: (type_expression (type_name))
       body: (body (integer)))))
+
+================================================================================
+Function with list type parameter
+================================================================================
+
+pub module App {
+  pub fn main(_args :: [String]) -> String {
+    "hello"
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      (parameter_list
+        (parameter
+          pattern: (identifier)
+          type: (type_expression
+            (list_type
+              (type_expression (type_name))))))
+      return_type: (type_expression (type_name))
+      body: (body (string (string_content))))))

@@ -2,22 +2,24 @@
 Case expression
 ================================================================================
 
-defmodule App do
-  def main() do
-    case result do
+pub module App {
+  pub fn main() {
+    case result {
       {:ok, v} -> v
       {:error, e} -> e
       _ -> "unknown"
-    end
-  end
-end
+    }
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body
         (case_expression
@@ -36,22 +38,24 @@ end
 If expression
 ================================================================================
 
-defmodule App do
-  def main() do
-    if x > 0 do
+pub module App {
+  pub fn main() {
+    if x > 0 {
       "positive"
-    else
+    } else {
       "non-positive"
-    end
-  end
-end
+    }
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body
         (if_expression
@@ -66,20 +70,22 @@ end
 Pipe expression
 ================================================================================
 
-defmodule App do
-  def main() do
+pub module App {
+  pub fn main() {
     5
     |> double()
     |> add_one()
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body
         (pipe_expression
@@ -92,21 +98,164 @@ end
 Unwrap expression
 ================================================================================
 
-defmodule App do
-  def main() do
+pub module App {
+  pub fn main() {
     check(10)!
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       body: (body
         (unwrap_expression
           (function_call
             name: (identifier)
             (argument_list (integer))))))))
+
+================================================================================
+Error pipe expression
+================================================================================
+
+pub module App {
+  pub fn main() {
+    parse("x")
+    |> format()
+    ~> {
+      :unknown -> "error"
+    }
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      body: (body
+        (error_pipe_expression
+          (pipe_expression
+            (function_call
+              name: (identifier)
+              (argument_list (string (string_content))))
+            (function_call name: (identifier)))
+          (case_clause
+            pattern: (atom)
+            body: (string (string_content))))))))
+
+================================================================================
+Struct expression
+================================================================================
+
+pub module App {
+  pub fn main() {
+    %Zap.Manifest{
+      name: "hello",
+      version: "0.1.0"
+    }
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      body: (body
+        (struct_expression
+          module: (module_path (module_name) (module_name))
+          (struct_field_value
+            key: (identifier)
+            value: (string (string_content)))
+          (struct_field_value
+            key: (identifier)
+            value: (string (string_content))))))))
+
+================================================================================
+Assignment
+================================================================================
+
+pub module App {
+  pub fn main() {
+    result = add(1, 2)
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      body: (body
+        (assignment
+          (identifier)
+          (function_call
+            name: (identifier)
+            (argument_list (integer) (integer))))))))
+
+================================================================================
+Qualified call
+================================================================================
+
+pub module App {
+  pub fn main() {
+    IO.puts("hello")
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      body: (body
+        (qualified_call
+          module: (module_path (module_name))
+          name: (identifier)
+          (argument_list (string (string_content))))))))
+
+================================================================================
+Module access (enum variant)
+================================================================================
+
+pub module App {
+  pub fn main() {
+    Color.Red
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      body: (body
+        (module_access
+          (module_path (module_name))
+          (module_name))))))

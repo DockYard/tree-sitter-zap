@@ -2,16 +2,17 @@
 Struct definition
 ================================================================================
 
-defstruct Point do
+pub struct Point {
   x :: f64
   y :: f64
-end
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (struct_definition
-    name: (module_name)
+    (visibility_modifier)
+    name: (module_path (module_name))
     (struct_field
       name: (identifier)
       type: (type_expression (type_name)))
@@ -20,85 +21,116 @@ end
       type: (type_expression (type_name)))))
 
 ================================================================================
-Struct with defaults and extends
+Struct with default and extends
 ================================================================================
 
-defstruct Circle extends Shape do
+pub struct Circle extends Shape {
   radius :: f64
-end
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (struct_definition
-    name: (module_name)
+    (visibility_modifier)
+    name: (module_path (module_name))
     parent: (module_path (module_name))
     (struct_field
       name: (identifier)
       type: (type_expression (type_name)))))
 
 ================================================================================
-Enum definition
+Union definition
 ================================================================================
 
-defenum Color do
+pub union Color {
   Red
   Green
   Blue
-end
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (enum_definition
+  (union_definition
+    (visibility_modifier)
     name: (module_name)
-    (enum_variant (module_name))
-    (enum_variant (module_name))
-    (enum_variant (module_name))))
+    (union_variant
+      name: (module_name))
+    (union_variant
+      name: (module_name))
+    (union_variant
+      name: (module_name))))
+
+================================================================================
+Union with typed variants
+================================================================================
+
+pub union ParseResult {
+  Ok :: String
+  Error :: Atom
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (union_definition
+    (visibility_modifier)
+    name: (module_name)
+    (union_variant
+      name: (module_name)
+      type: (type_expression (type_name)))
+    (union_variant
+      name: (module_name)
+      type: (type_expression (type_name)))))
 
 ================================================================================
 Union return type
 ================================================================================
 
-defmodule App do
-  def check(x :: i64) :: String | nil do
+pub module App {
+  pub fn check(x :: i64) -> String | Nil {
     "ok"
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       (parameter_list
         (parameter
-          name: (identifier)
+          pattern: (identifier)
           type: (type_expression (type_name))))
       return_type: (type_expression
         (union_type
           (type_name)
-          (literal_type)))
+          (type_name)))
       body: (body (string (string_content))))))
 
 ================================================================================
 Tuple return type
 ================================================================================
 
-defmodule Tuples do
-  def pair() :: {i64, String} do
+pub module Tuples {
+  pub fn pair() -> {i64, String} {
     {1, "one"}
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       return_type: (type_expression
         (tuple_type
@@ -108,3 +140,26 @@ end
         (tuple
           (integer)
           (string (string_content)))))))
+
+================================================================================
+Type declaration with params
+================================================================================
+
+pub module M {
+  type Result(a, e) = {a, e}
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (type_declaration
+      name: (module_name)
+      (type_variable (identifier))
+      (type_variable (identifier))
+      type: (type_expression
+        (tuple_type
+          (type_expression (type_variable (identifier)))
+          (type_expression (type_variable (identifier))))))))

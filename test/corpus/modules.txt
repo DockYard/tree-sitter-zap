@@ -2,35 +2,38 @@
 Simple module
 ================================================================================
 
-defmodule Math do
-end
+pub module Math {
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))))
 
 ================================================================================
 Module with function
 ================================================================================
 
-defmodule Runner do
-  def hello(word :: String) :: String do
+pub module Runner {
+  pub fn hello(word :: String) -> String {
     "Hello" <> " " <> word
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       (parameter_list
         (parameter
-          name: (identifier)
+          pattern: (identifier)
           type: (type_expression (type_name))))
       return_type: (type_expression (type_name))
       body: (body
@@ -44,20 +47,49 @@ end
 Module with extends
 ================================================================================
 
-defmodule Dog extends Animal do
-  def speak() :: String do
+pub module Dog extends Animal {
+  pub fn speak() -> String {
     "woof"
-  end
-end
+  }
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
   (module_definition
+    (visibility_modifier)
     name: (module_path (module_name))
     parent: (module_path (module_name))
     (function_definition
+      (visibility_modifier)
       name: (identifier)
       return_type: (type_expression (type_name))
       body: (body
         (string (string_content))))))
+
+================================================================================
+Private module
+================================================================================
+
+module Internal {
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    name: (module_path (module_name))))
+
+================================================================================
+Dotted module name
+================================================================================
+
+pub module Hello.Builder {
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name) (module_name))))

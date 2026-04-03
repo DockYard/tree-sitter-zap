@@ -1,0 +1,69 @@
+================================================================================
+Typed attribute declaration
+================================================================================
+
+pub module Config {
+  @timeout :: i64 = 5000
+  pub fn timeout() -> i64 {
+    @timeout
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (attribute_declaration
+      name: (identifier)
+      type: (type_expression (type_name))
+      value: (integer))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      return_type: (type_expression (type_name))
+      body: (body
+        (attribute_reference
+          name: (identifier))))))
+
+================================================================================
+Marker attribute
+================================================================================
+
+pub module M {
+  @moduledoc
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (attribute_declaration
+      name: (identifier))))
+
+================================================================================
+String attribute
+================================================================================
+
+pub module M {
+  @doc :: String = "Entry point"
+  pub fn main() {
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (attribute_declaration
+      name: (identifier)
+      type: (type_expression (type_name))
+      value: (string (string_content)))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier))))
