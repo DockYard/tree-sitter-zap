@@ -1,0 +1,74 @@
+================================================================================
+Sigil with string
+================================================================================
+
+pub module M {
+  pub fn f() {
+    ~s"hello"
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      body: (body
+        (sigil
+          (sigil_name)
+          (string (string_content)))))))
+
+================================================================================
+Uppercase sigil
+================================================================================
+
+pub module M {
+  pub fn f() {
+    ~S"raw string"
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      body: (body
+        (sigil
+          (sigil_name)
+          (string (string_content)))))))
+
+================================================================================
+Sigil with heredoc
+================================================================================
+
+pub module M {
+  pub fn f() {
+    ~w"""
+    foo bar baz
+    """
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      body: (body
+        (sigil
+          (sigil_name)
+          (heredoc
+            (heredoc_content)))))))

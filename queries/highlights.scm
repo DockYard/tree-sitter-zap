@@ -10,9 +10,12 @@
   "else"
   "case"
   "cond"
+  "for"
   "with"
+  "use"
   "quote"
   "unquote"
+  "unquote_splicing"
   "import"
   "alias"
   "type"
@@ -58,6 +61,8 @@
 (float) @number.float
 (string) @string
 (string_content) @string
+(heredoc) @string
+(heredoc_content) @string
 (escape_sequence) @string.escape
 (string_interpolation
   "#{" @punctuation.special
@@ -65,6 +70,9 @@
 (atom) @string.special.symbol
 (boolean) @constant.builtin
 (nil) @constant.builtin
+
+; Sigils
+(sigil_name) @function.macro
 
 ; Comments
 (comment) @comment
@@ -123,6 +131,10 @@
 ; Function references
 (function_reference
   name: (identifier) @function)
+
+; For comprehension
+(for_expression
+  variable: (identifier) @variable)
 
 ; Wildcard
 (wildcard) @variable.builtin

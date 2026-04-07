@@ -1,0 +1,82 @@
+================================================================================
+Heredoc string
+================================================================================
+
+pub module M {
+  pub fn f() -> String {
+    """
+    hello world
+    """
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      return_type: (type_expression (type_name))
+      body: (body
+        (heredoc
+          (heredoc_content))))))
+
+================================================================================
+Attribute with heredoc value (no type)
+================================================================================
+
+pub module M {
+  @doc = """
+    Returns a greeting.
+    """
+  pub fn greet() -> String {
+    "hello"
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (attribute_declaration
+      name: (identifier)
+      value: (heredoc
+        (heredoc_content)))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      return_type: (type_expression (type_name))
+      body: (body
+        (string (string_content))))))
+
+================================================================================
+Moduledoc with heredoc
+================================================================================
+
+pub module M {
+  @moduledoc = """
+    Module documentation.
+
+    ## Examples
+
+        M.hello()
+    """
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (attribute_declaration
+      name: (identifier)
+      value: (heredoc
+        (heredoc_content)
+        (heredoc_content)
+        (heredoc_content)))))

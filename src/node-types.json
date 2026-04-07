@@ -79,11 +79,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -143,6 +151,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -164,6 +176,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -230,11 +246,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -294,6 +318,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -315,6 +343,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -401,11 +433,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -465,6 +505,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -486,6 +530,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -577,11 +625,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -645,6 +701,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -666,6 +726,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -743,11 +807,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -803,6 +875,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -816,6 +892,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -878,11 +958,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -942,6 +1030,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -963,6 +1055,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -998,6 +1094,21 @@
         },
         {
           "type": "module_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block_argument",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "body",
           "named": true
         }
       ]
@@ -1056,6 +1167,10 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
@@ -1065,6 +1180,10 @@
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -1132,6 +1251,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -1153,6 +1276,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -1224,11 +1351,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -1288,6 +1423,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -1309,6 +1448,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -1370,11 +1513,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -1434,6 +1585,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -1455,6 +1610,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -1516,11 +1675,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -1580,6 +1747,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -1601,6 +1772,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -1678,11 +1853,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -1742,6 +1925,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -1763,6 +1950,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -1845,11 +2036,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -1909,6 +2108,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -1930,6 +2133,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -1991,11 +2198,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -2055,6 +2270,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -2076,6 +2295,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -2162,11 +2385,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -2226,6 +2457,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -2247,6 +2482,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -2274,6 +2513,10 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "module_name",
             "named": true
           }
         ]
@@ -2324,11 +2567,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -2388,6 +2639,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -2412,6 +2667,10 @@
           "named": true
         },
         {
+          "type": "unquote_splicing_expression",
+          "named": true
+        },
+        {
           "type": "unwrap_expression",
           "named": true
         },
@@ -2427,9 +2686,521 @@
     }
   },
   {
+    "type": "for_expression",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "attribute_reference",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "binary_literal",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "case_expression",
+            "named": true
+          },
+          {
+            "type": "cond_expression",
+            "named": true
+          },
+          {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
+            "type": "field_access",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "for_expression",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "map_literal",
+            "named": true
+          },
+          {
+            "type": "module_access",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "panic_expression",
+            "named": true
+          },
+          {
+            "type": "paren_expression",
+            "named": true
+          },
+          {
+            "type": "pin_expression",
+            "named": true
+          },
+          {
+            "type": "pipe_expression",
+            "named": true
+          },
+          {
+            "type": "qualified_call",
+            "named": true
+          },
+          {
+            "type": "quote_expression",
+            "named": true
+          },
+          {
+            "type": "sigil",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "type_annotation",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
+            "named": true
+          },
+          {
+            "type": "unwrap_expression",
+            "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
+          },
+          {
+            "type": "with_expression",
+            "named": true
+          }
+        ]
+      },
+      "filter": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "attribute_reference",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "binary_literal",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "case_expression",
+            "named": true
+          },
+          {
+            "type": "cond_expression",
+            "named": true
+          },
+          {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
+            "type": "field_access",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "for_expression",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "map_literal",
+            "named": true
+          },
+          {
+            "type": "module_access",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "panic_expression",
+            "named": true
+          },
+          {
+            "type": "paren_expression",
+            "named": true
+          },
+          {
+            "type": "pin_expression",
+            "named": true
+          },
+          {
+            "type": "pipe_expression",
+            "named": true
+          },
+          {
+            "type": "qualified_call",
+            "named": true
+          },
+          {
+            "type": "quote_expression",
+            "named": true
+          },
+          {
+            "type": "sigil",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "type_annotation",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
+            "named": true
+          },
+          {
+            "type": "unwrap_expression",
+            "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
+          },
+          {
+            "type": "with_expression",
+            "named": true
+          }
+        ]
+      },
+      "iterable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "attribute_reference",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "binary_literal",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "case_expression",
+            "named": true
+          },
+          {
+            "type": "cond_expression",
+            "named": true
+          },
+          {
+            "type": "error_pipe_expression",
+            "named": true
+          },
+          {
+            "type": "field_access",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "for_expression",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "intrinsic_call",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "map_literal",
+            "named": true
+          },
+          {
+            "type": "module_access",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "panic_expression",
+            "named": true
+          },
+          {
+            "type": "paren_expression",
+            "named": true
+          },
+          {
+            "type": "pin_expression",
+            "named": true
+          },
+          {
+            "type": "pipe_expression",
+            "named": true
+          },
+          {
+            "type": "qualified_call",
+            "named": true
+          },
+          {
+            "type": "quote_expression",
+            "named": true
+          },
+          {
+            "type": "sigil",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_expression",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "type_annotation",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
+            "named": true
+          },
+          {
+            "type": "unwrap_expression",
+            "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
+          },
+          {
+            "type": "with_expression",
+            "named": true
+          }
+        ]
+      },
+      "variable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "function_call",
     "named": true,
     "fields": {
+      "block": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_argument",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": true,
@@ -2511,11 +3282,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -2575,6 +3354,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -2596,6 +3379,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -2700,6 +3487,29 @@
     }
   },
   {
+    "type": "heredoc",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        },
+        {
+          "type": "heredoc_content",
+          "named": true
+        },
+        {
+          "type": "string_interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "if_expression",
     "named": true,
     "fields": {
@@ -2748,11 +3558,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -2812,6 +3630,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -2833,6 +3655,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -2995,11 +3821,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -3059,6 +3893,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -3080,6 +3918,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -3125,6 +3967,10 @@
           "named": true
         },
         {
+          "type": "heredoc",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
@@ -3154,7 +4000,15 @@
         "required": true,
         "types": [
           {
+            "type": "and",
+            "named": false
+          },
+          {
             "type": "cond",
+            "named": false
+          },
+          {
+            "type": "fn",
             "named": false
           },
           {
@@ -3166,7 +4020,23 @@
             "named": false
           },
           {
+            "type": "or",
+            "named": false
+          },
+          {
+            "type": "struct",
+            "named": false
+          },
+          {
+            "type": "union",
+            "named": false
+          },
+          {
             "type": "with",
+            "named": false
+          },
+          {
+            "type": "|>",
             "named": false
           }
         ]
@@ -3246,11 +4116,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -3310,6 +4188,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -3331,6 +4213,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -3467,6 +4353,10 @@
           "named": true
         },
         {
+          "type": "use_statement",
+          "named": true
+        },
+        {
           "type": "visibility_modifier",
           "named": true
         }
@@ -3592,11 +4482,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -3656,6 +4554,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -3677,6 +4579,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -3743,11 +4649,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -3807,6 +4721,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -3828,6 +4746,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -3885,11 +4807,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -3949,6 +4879,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -3962,6 +4896,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -4079,11 +5017,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -4143,6 +5089,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -4164,6 +5114,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -4245,11 +5199,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -4309,6 +5271,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -4330,6 +5296,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -4397,6 +5367,29 @@
       "types": [
         {
           "type": "body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sigil",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "heredoc",
+          "named": true
+        },
+        {
+          "type": "sigil_name",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -4514,11 +5507,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -4578,6 +5579,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -4599,6 +5604,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -4731,11 +5740,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -4795,6 +5812,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -4816,6 +5837,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -4913,11 +5938,19 @@
             "named": true
           },
           {
+            "type": "for_expression",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
           {
             "type": "function_reference",
+            "named": true
+          },
+          {
+            "type": "heredoc",
             "named": true
           },
           {
@@ -4977,6 +6010,10 @@
             "named": true
           },
           {
+            "type": "sigil",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -4998,6 +6035,10 @@
           },
           {
             "type": "unquote_expression",
+            "named": true
+          },
+          {
+            "type": "unquote_splicing_expression",
             "named": true
           },
           {
@@ -5065,11 +6106,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -5129,6 +6178,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -5150,6 +6203,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -5242,11 +6299,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -5306,6 +6371,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -5327,6 +6396,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -5508,11 +6581,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -5572,6 +6653,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -5593,6 +6678,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -5766,11 +6855,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -5830,6 +6927,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -5851,6 +6952,177 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
+          "named": true
+        },
+        {
+          "type": "unwrap_expression",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        },
+        {
+          "type": "with_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unquote_splicing_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "attribute_reference",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "binary_literal",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "case_expression",
+          "named": true
+        },
+        {
+          "type": "cond_expression",
+          "named": true
+        },
+        {
+          "type": "error_pipe_expression",
+          "named": true
+        },
+        {
+          "type": "field_access",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "for_expression",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "intrinsic_call",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "map_literal",
+          "named": true
+        },
+        {
+          "type": "module_access",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "panic_expression",
+          "named": true
+        },
+        {
+          "type": "paren_expression",
+          "named": true
+        },
+        {
+          "type": "pin_expression",
+          "named": true
+        },
+        {
+          "type": "pipe_expression",
+          "named": true
+        },
+        {
+          "type": "qualified_call",
+          "named": true
+        },
+        {
+          "type": "quote_expression",
+          "named": true
+        },
+        {
+          "type": "sigil",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "type_annotation",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -5917,11 +7189,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -5981,6 +7261,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -6005,6 +7289,10 @@
           "named": true
         },
         {
+          "type": "unquote_splicing_expression",
+          "named": true
+        },
+        {
           "type": "unwrap_expression",
           "named": true
         },
@@ -6017,6 +7305,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "use_statement",
+    "named": true,
+    "fields": {
+      "module": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "module_path",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -6083,11 +7387,19 @@
           "named": true
         },
         {
+          "type": "for_expression",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
         {
           "type": "function_reference",
+          "named": true
+        },
+        {
+          "type": "heredoc",
           "named": true
         },
         {
@@ -6147,6 +7459,10 @@
           "named": true
         },
         {
+          "type": "sigil",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -6168,6 +7484,10 @@
         },
         {
           "type": "unquote_expression",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing_expression",
           "named": true
         },
         {
@@ -6225,6 +7545,10 @@
   },
   {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "\"\"\"",
     "named": false
   },
   {
@@ -6437,6 +7761,14 @@
     "named": false
   },
   {
+    "type": "for",
+    "named": false
+  },
+  {
+    "type": "heredoc_content",
+    "named": true
+  },
+  {
     "type": "i16",
     "named": false
   },
@@ -6521,6 +7853,10 @@
     "named": false
   },
   {
+    "type": "sigil_name",
+    "named": true
+  },
+  {
     "type": "string_content",
     "named": true
   },
@@ -6566,6 +7902,14 @@
   },
   {
     "type": "unquote",
+    "named": false
+  },
+  {
+    "type": "unquote_splicing",
+    "named": false
+  },
+  {
+    "type": "use",
     "named": false
   },
   {

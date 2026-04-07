@@ -73,6 +73,7 @@ module.exports = grammar({
         $.opaque_declaration,
         $.import_statement,
         $.alias_statement,
+        $.use_statement,
         $.attribute_declaration,
       ),
 
@@ -96,7 +97,21 @@ module.exports = grammar({
       seq(
         optional($.visibility_modifier),
         "macro",
-        field("name", choice($.identifier, "if", "cond", "with")),
+        field(
+          "name",
+          choice(
+            $.identifier,
+            "if",
+            "cond",
+            "with",
+            "and",
+            "or",
+            "fn",
+            "struct",
+            "union",
+            "|>",
+          ),
+        ),
         "(",
         optional($.parameter_list),
         ")",
@@ -123,7 +138,11 @@ module.exports = grammar({
       seq(
         field("pattern", $._pattern_expr),
         optional(
-          seq("::", optional($.ownership_modifier), field("type", $.type_expression)),
+          seq(
+            "::",
+            optional($.ownership_modifier),
+            field("type", $.type_expression),
+          ),
         ),
         optional(seq("=", field("default", $._expression))),
       ),
@@ -201,14 +220,23 @@ module.exports = grammar({
         "@",
         field("name", $.identifier),
         optional(
-          seq(
-            "::",
-            field("type", $.type_expression),
-            "=",
-            field("value", $._expression),
+          choice(
+            // Typed: @name :: Type = value
+            seq(
+              "::",
+              field("type", $.type_expression),
+              "=",
+              field("value", $._expression),
+            ),
+            // Untyped: @name = value
+            seq("=", field("value", $._expression)),
           ),
         ),
       ),
+
+    // ── Use statement ─────────────────────────────────────────────
+    use_statement: ($) =>
+      seq("use", field("module", $.module_path)),
 
     // ── Import and alias ──────────────────────────────────────────
     import_statement: ($) =>
@@ -262,11 +290,24 @@ module.exports = grammar({
 
     type_name: ($) =>
       choice(
-        "i8", "i16", "i32", "i64",
-        "u8", "u16", "u32", "u64",
-        "f16", "f32", "f64",
-        "isize", "usize",
-        "Bool", "String", "Atom", "Nil", "Never",
+        "i8",
+        "i16",
+        "i32",
+        "i64",
+        "u8",
+        "u16",
+        "u32",
+        "u64",
+        "f16",
+        "f32",
+        "f64",
+        "isize",
+        "usize",
+        "Bool",
+        "String",
+        "Atom",
+        "Nil",
+        "Never",
       ),
 
     type_variable: ($) => $.identifier,
@@ -280,7 +321,8 @@ module.exports = grammar({
 
     list_type: ($) => seq("[", $.type_expression, "]"),
 
-    map_type: ($) => seq("%{", $.type_expression, "=>", $.type_expression, "}"),
+    map_type: ($) =>
+      seq("%{", $.type_expression, "=>", $.type_expression, "}"),
 
     function_type: ($) =>
       seq(
@@ -292,7 +334,7 @@ module.exports = grammar({
       ),
 
     literal_type: ($) =>
-      choice($.integer, $.float, $.string, "true", "false", "nil"),
+      choice($.integer, $.float, $.string, $.heredoc, "true", "false", "nil"),
 
     // ── Expressions ───────────────────────────────────────────────
     _expression: ($) =>
@@ -347,7 +389,14 @@ module.exports = grammar({
     error_pipe_expression: ($) =>
       prec.left(
         PREC.ERROR_PIPE,
-        seq($._expression, "~>", "{", repeat($.case_clause), "}"),
+        seq(
+          $._expression,
+          "~>",
+          choice(
+            seq("{", repeat($.case_clause), "}"),
+            $._expression,
+          ),
+        ),
       ),
 
     unwrap_expression: ($) =>
@@ -360,6 +409,8 @@ module.exports = grammar({
         $.integer,
         $.float,
         $.string,
+        $.heredoc,
+        $.sigil,
         $.atom,
         $.boolean,
         $.nil,
@@ -377,9 +428,11 @@ module.exports = grammar({
         $.if_expression,
         $.case_expression,
         $.cond_expression,
+        $.for_expression,
         $.with_expression,
         $.quote_expression,
         $.unquote_expression,
+        $.unquote_splicing_expression,
         $.panic_expression,
         $.attribute_reference,
         $.intrinsic_call,
@@ -414,10 +467,35 @@ module.exports = grammar({
         '"',
       ),
 
+    // ── Heredoc (triple-quoted string) ────────────────────────────
+    heredoc: ($) =>
+      seq(
+        '"""',
+        repeat(
+          choice(
+            $.heredoc_content,
+            $.escape_sequence,
+            $.string_interpolation,
+          ),
+        ),
+        '"""',
+      ),
+
+    heredoc_content: ($) => token.immediate(prec(1, /[^"\\#]+|"[^"]|""[^"]|#[^{]/)),
+
     string_content: ($) => token.immediate(prec(1, /[^"\\#]+|#[^{]/)),
     escape_sequence: ($) => token.immediate(seq("\\", /./)),
     string_interpolation: ($) =>
       seq(token.immediate("#{"), $._expression, "}"),
+
+    // ── Sigil ─────────────────────────────────────────────────────
+    sigil: ($) =>
+      seq(
+        $.sigil_name,
+        choice($.string, $.heredoc),
+      ),
+
+    sigil_name: ($) => token(seq("~", /[a-zA-Z_][a-zA-Z0-9_]*/)),
 
     atom: ($) => token(seq(":", /[a-zA-Z_][a-zA-Z0-9_]*[!?]?/)),
 
@@ -477,13 +555,14 @@ module.exports = grammar({
 
     // ── Function calls ────────────────────────────────────────────
     function_call: ($) =>
-      prec(
+      prec.right(
         PREC.CALL,
         seq(
           field("name", $.identifier),
           token.immediate("("),
           optional($.argument_list),
           ")",
+          optional(field("block", $.block_argument)),
         ),
       ),
 
@@ -500,12 +579,19 @@ module.exports = grammar({
         ),
       ),
 
+    block_argument: ($) =>
+      prec.dynamic(-1, seq("{", optional($.body), "}")),
+
     argument_list: ($) => commaSep1($._expression),
 
     field_access: ($) =>
       prec.left(
         PREC.ACCESS,
-        seq($._expression, ".", field("field", $.identifier)),
+        seq(
+          $._expression,
+          ".",
+          field("field", choice($.identifier, $.module_name)),
+        ),
       ),
 
     module_access: ($) =>
@@ -577,6 +663,19 @@ module.exports = grammar({
         field("body", $._expression),
       ),
 
+    // ── For comprehension ─────────────────────────────────────────
+    for_expression: ($) =>
+      seq(
+        "for",
+        field("variable", $.identifier),
+        "<-",
+        field("iterable", $._expression),
+        optional(seq(",", field("filter", $._expression))),
+        "{",
+        field("body", $._expression),
+        "}",
+      ),
+
     with_expression: ($) =>
       seq(
         "with",
@@ -593,6 +692,9 @@ module.exports = grammar({
     quote_expression: ($) => seq("quote", "{", optional($.body), "}"),
 
     unquote_expression: ($) => seq("unquote", "(", $._expression, ")"),
+
+    unquote_splicing_expression: ($) =>
+      seq("unquote_splicing", "(", $._expression, ")"),
 
     // ── Panic ─────────────────────────────────────────────────────
     panic_expression: ($) => seq("panic", "(", $._expression, ")"),

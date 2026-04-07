@@ -1,0 +1,56 @@
+================================================================================
+Use statement
+================================================================================
+
+pub module Test.MyTest {
+  use Zest.Case
+
+  pub fn run() -> String {
+    "done"
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name) (module_name))
+    (use_statement
+      module: (module_path (module_name) (module_name)))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      return_type: (type_expression (type_name))
+      body: (body
+        (string (string_content))))))
+
+================================================================================
+For comprehension
+================================================================================
+
+pub module M {
+  pub fn f() {
+    for x <- [1, 2, 3] {
+      x * 2
+    }
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (visibility_modifier)
+    name: (module_path (module_name))
+    (function_definition
+      (visibility_modifier)
+      name: (identifier)
+      body: (body
+        (for_expression
+          variable: (identifier)
+          iterable: (list (integer) (integer) (integer))
+          body: (binary_expression
+            (identifier)
+            (multiplicative_operator)
+            (integer)))))))
