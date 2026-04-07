@@ -1,8 +1,101 @@
-; Keywords
+; Punctuation
 [
-  "module"
+  ","
+  "."
+  ":"
+] @punctuation.delimiter
+
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+  "<<"
+  ">>"
+] @punctuation.bracket
+
+[
+  "%{"
+  "%"
+] @punctuation.special
+
+; Identifiers
+(identifier) @variable
+
+; Unused identifiers
+((identifier) @comment
+  (#lua-match? @comment "^_"))
+
+; Comments
+(comment) @comment @spell
+
+; Strings
+(string) @string
+(string_content) @string
+(heredoc) @string
+(heredoc_content) @string
+(escape_sequence) @string.escape
+
+; Interpolation
+(string_interpolation
+  "#{" @string.special
+  "}" @string.special)
+
+; Modules
+(module_name) @module
+(module_path (module_name) @module)
+
+; Atoms
+(atom) @string.special.symbol
+
+; Integers
+(integer) @number
+
+; Floats
+(float) @number.float
+
+; Booleans
+(boolean) @boolean
+
+; Nil
+(nil) @constant.builtin
+
+; Operators
+[
+  "="
+  "|>"
+  "~>"
+  "<>"
+  "<-"
+  "::"
+  "->"
+  "!"
+  "^"
+] @operator
+
+(comparison_operator) @operator
+(additive_operator) @operator
+(multiplicative_operator) @operator
+
+; Operator keywords
+[
+  "and"
+  "or"
+  "not"
+  "rem"
+] @keyword.operator
+
+; Definition keywords
+[
   "fn"
   "macro"
+] @keyword.function
+
+; Reserved keywords
+[
+  "module"
   "struct"
   "union"
   "extends"
@@ -20,10 +113,6 @@
   "alias"
   "type"
   "opaque"
-  "and"
-  "or"
-  "not"
-  "rem"
   "panic"
   "shared"
   "unique"
@@ -38,48 +127,11 @@
   "type:"
 ] @keyword
 
-; Operators
-[
-  "="
-  "|>"
-  "~>"
-  "<>"
-  "<-"
-  "::"
-  "->"
-  "!"
-  "^"
-  "@"
-] @operator
+; Visibility
+(visibility_modifier) @keyword
 
-(comparison_operator) @operator
-(additive_operator) @operator
-(multiplicative_operator) @operator
-
-; Literals
-(integer) @number
-(float) @number.float
-(string) @string
-(string_content) @string
-(heredoc) @string
-(heredoc_content) @string
-(escape_sequence) @string.escape
-(string_interpolation
-  "#{" @punctuation.special
-  "}" @punctuation.special)
-(atom) @string.special.symbol
-(boolean) @constant.builtin
-(nil) @constant.builtin
-
-; Sigils
-(sigil_name) @function.macro
-
-; Comments
-(comment) @comment
-
-; Module names
-(module_name) @type
-(module_path (module_name) @type)
+; Ownership
+(ownership_modifier) @keyword
 
 ; Function definitions
 (function_definition
@@ -94,15 +146,11 @@
   name: (identifier) @function.call)
 (qualified_call
   name: (identifier) @function.call)
+(qualified_call
+  name: (module_name) @function.call)
 
 ; Type annotations
 (type_name) @type.builtin
-
-; Visibility
-(visibility_modifier) @keyword
-
-; Ownership
-(ownership_modifier) @keyword
 
 ; Parameters
 (parameter
@@ -115,16 +163,31 @@
   key: (identifier) @property)
 (field_access
   field: (identifier) @property)
+(field_access
+  field: (module_name) @module)
 
 ; Union variants
 (union_variant
   name: (module_name) @constant)
 
-; Attributes
+; Module attributes — general (@timeout, @max_retries, etc.)
 (attribute_declaration
-  name: (identifier) @attribute)
+  "@" @constant
+  name: (identifier) @constant)
+
+; Documentation attributes — @doc, @moduledoc, @typedoc
+(attribute_declaration
+  "@" @comment.documentation
+  name: ((identifier) @comment.documentation
+    (#any-of? @comment.documentation "doc" "moduledoc" "typedoc" "shortdoc"))
+  value: (_) @comment.documentation)
+
+; Attribute references in expressions
 (attribute_reference
-  name: (identifier) @attribute)
+  "@" @constant
+  name: (identifier) @constant)
+
+; Intrinsic calls
 (intrinsic_call
   name: (identifier) @function.builtin)
 
@@ -132,30 +195,19 @@
 (function_reference
   name: (identifier) @function)
 
-; For comprehension
+; Sigils — string sigils
+(sigil
+  (sigil_name) @string @_sigil_name
+  (#any-of? @_sigil_name "~s" "~S"))
+
+; Sigils — non-string
+(sigil
+  (sigil_name) @string.special @_sigil_name
+  (#not-any-of? @_sigil_name "~s" "~S"))
+
+; For comprehension variable
 (for_expression
   variable: (identifier) @variable)
 
 ; Wildcard
 (wildcard) @variable.builtin
-
-; Punctuation
-[
-  "("
-  ")"
-  "["
-  "]"
-  "{"
-  "}"
-  "<<"
-  ">>"
-] @punctuation.bracket
-
-[
-  ","
-  "."
-  ":"
-] @punctuation.delimiter
-
-"%{" @punctuation.bracket
-"%" @punctuation.bracket
