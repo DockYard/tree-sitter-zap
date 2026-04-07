@@ -6,18 +6,68 @@ A [tree-sitter](https://tree-sitter.github.io/) grammar for the [Zap](https://gi
 
 - **Modules** &mdash; `pub module` / `module`, module inheritance with `extends`, dotted module paths
 - **Functions** &mdash; `pub fn` / `fn` with typed parameters, pattern matching, guard clauses (`if`), default values, return types (`->`)
-- **Macros** &mdash; `pub macro` / `macro` with `quote` / `unquote`
+- **Macros** &mdash; `pub macro` / `macro` with `quote` / `unquote` / `unquote_splicing`
 - **Structs** &mdash; `pub struct` with field types, defaults, inheritance (`extends`), dotted names
 - **Unions** &mdash; `pub union` with named variants and optional typed payloads
 - **Type system** &mdash; primitives (`i8`&ndash;`i64`, `u8`&ndash;`u64`, `f16`&ndash;`f64`, `Bool`, `String`, `Atom`, `Nil`, `Never`), user-defined types, union types (`A | B`), tuple/list/map/function types, parameterized types, `type` and `opaque` aliases
 - **Expressions** &mdash; arithmetic, comparison, logical (`and`/`or`/`not`), string concatenation (`<>`), pipe (`|>`), error pipe (`~>`), unwrap (`!`), type annotations (`::`)
-- **Control flow** &mdash; `if`/`else`, `case` with pattern matching, `cond`, `with`/`<-`
-- **Literals** &mdash; integers (decimal, hex, binary, octal, underscores), floats, strings with `#{}` interpolation, atoms (`:name`), booleans, `nil`, tuples, lists (with cons `|`), maps (`%{}`), struct expressions (`%Module{}`), binaries (`<<>>`)
+- **Control flow** &mdash; `if`/`else`, `case` with pattern matching, `cond`, `for` comprehensions, `with`/`<-`
+- **Literals** &mdash; integers (decimal, hex, binary, octal, underscores), floats, strings with `#{}` interpolation, heredocs (`"""`), sigils (`~s"..."`, `~w"""..."""`), atoms (`:name`), booleans, `nil`, tuples, lists (with cons `|`), maps (`%{}`), struct expressions (`%Module{}`), binaries (`<<>>`)
 - **Patterns** &mdash; wildcard (`_`), pin (`^var`), tuple/list/map/struct destructuring
-- **Attributes** &mdash; `@name :: Type = value` declarations, `@name` references, `@name()` intrinsic calls
+- **Attributes** &mdash; `@name :: Type = value` and `@name = value` declarations, `@name` references, `@name()` intrinsic calls
+- **Documentation** &mdash; `@doc` / `@moduledoc` with heredoc content, markdown injection for editor highlighting
 - **Ownership** &mdash; `shared`, `unique`, `borrowed` parameter modifiers
-- **Module system** &mdash; `import` (with `only:` / `except:`), `alias` (with `as:`)
+- **Module system** &mdash; `import` (with `only:` / `except:`), `alias` (with `as:`), `use`
 - **Comments** &mdash; `# ...`
+
+## Neovim
+
+### Setup
+
+Add to your nvim-treesitter config:
+
+```lua
+{
+  "nvim-treesitter/nvim-treesitter",
+  opts = function(_, opts)
+    local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+
+    parser_configs.zap = {
+      install_info = {
+        url = "https://github.com/DockYard/tree-sitter-zap",
+        files = { "src/parser.c" },
+        branch = "main",
+      },
+      filetype = "zap",
+    }
+
+    opts.ensure_installed = opts.ensure_installed or {}
+    vim.list_extend(opts.ensure_installed, { "zap" })
+  end,
+}
+```
+
+Add filetype detection in `ftdetect/zap.lua`:
+
+```lua
+vim.filetype.add({ extension = { zap = "zap" } })
+```
+
+Copy the query files to your neovim config:
+
+```sh
+mkdir -p ~/.config/nvim/queries/zap
+cp queries/highlights.scm ~/.config/nvim/queries/zap/
+cp queries/injections.scm ~/.config/nvim/queries/zap/
+```
+
+The injections query enables markdown syntax highlighting inside `@doc` and `@moduledoc` heredocs.
+
+### Install the parser
+
+```vim
+:TSInstall zap
+```
 
 ## Usage
 
@@ -29,7 +79,7 @@ A [tree-sitter](https://tree-sitter.github.io/) grammar for the [Zap](https://gi
 ### Install
 
 ```sh
-git clone https://github.com/bcardarella/tree-sitter-zap.git
+git clone https://github.com/DockYard/tree-sitter-zap.git
 cd tree-sitter-zap
 npm install
 ```
@@ -63,18 +113,20 @@ npx tree-sitter highlight path/to/file.zap
 Given this Zap source:
 
 ```zap
-pub module Factorial {
-  pub fn factorial(0 :: i64) -> i64 {
-    1
-  }
+pub module Greeter {
+  @moduledoc = """
+    A simple greeter module.
+    """
 
-  pub fn factorial(n :: i64) -> i64 {
-    n * factorial(n - 1)
+  @doc = """
+    Returns a greeting string for the given name.
+    """
+  pub fn greet(name :: String) -> String {
+    "Hello, " <> name <> "!"
   }
 
   pub fn main(_args :: [String]) -> String {
-    Factorial.factorial(10)
-    |> Integer.to_string()
+    greet("World")
     |> IO.puts()
   }
 }
@@ -87,15 +139,12 @@ The parser produces:
   (module_definition
     (visibility_modifier)
     name: (module_path (module_name))
-    (function_definition
-      (visibility_modifier)
+    (attribute_declaration
       name: (identifier)
-      (parameter_list
-        (parameter
-          pattern: (integer)
-          type: (type_expression (type_name))))
-      return_type: (type_expression (type_name))
-      body: (body (integer)))
+      value: (heredoc (heredoc_content)))
+    (attribute_declaration
+      name: (identifier)
+      value: (heredoc (heredoc_content)))
     (function_definition
       (visibility_modifier)
       name: (identifier)
@@ -106,15 +155,10 @@ The parser produces:
       return_type: (type_expression (type_name))
       body: (body
         (binary_expression
-          (identifier)
-          (multiplicative_operator)
-          (function_call
-            name: (identifier)
-            (argument_list
-              (binary_expression
-                (identifier)
-                (additive_operator)
-                (integer)))))))
+          (binary_expression
+            (string (string_content))
+            (identifier))
+          (string (string_content)))))
     (function_definition
       (visibility_modifier)
       name: (identifier)
@@ -126,14 +170,9 @@ The parser produces:
       return_type: (type_expression (type_name))
       body: (body
         (pipe_expression
-          (pipe_expression
-            (qualified_call
-              module: (module_path (module_name))
-              name: (identifier)
-              (argument_list (integer)))
-            (qualified_call
-              module: (module_path (module_name))
-              name: (identifier)))
+          (function_call
+            name: (identifier)
+            (argument_list (string (string_content))))
           (qualified_call
             module: (module_path (module_name))
             name: (identifier)))))))
@@ -143,9 +182,10 @@ The parser produces:
 
 ```
 tree-sitter-zap/
-  grammar.js             # Grammar definition
-  queries/highlights.scm # Syntax highlighting queries
-  test/corpus/           # Test cases
-  src/                   # Generated parser (C)
-  tree-sitter.json       # Parser metadata
+  grammar.js               # Grammar definition
+  queries/highlights.scm    # Syntax highlighting queries
+  queries/injections.scm    # Language injection queries (markdown in docs)
+  test/corpus/              # Test cases
+  src/                      # Generated parser (C)
+  tree-sitter.json          # Parser metadata
 ```
