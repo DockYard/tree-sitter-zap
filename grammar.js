@@ -28,6 +28,7 @@ module.exports = grammar({
   conflicts: ($) => [
     [$.type_expression, $.union_type],
     [$._pattern_expr, $._expression],
+    [$.attribute_declaration, $.attribute_reference],
   ],
 
   rules: {
@@ -36,6 +37,8 @@ module.exports = grammar({
     _top_level: ($) =>
       choice(
         $.module_definition,
+        $.protocol_definition,
+        $.impl_definition,
         $.struct_definition,
         $.union_definition,
         $.type_declaration,
@@ -45,7 +48,6 @@ module.exports = grammar({
       ),
 
     // ── Comments ──────────────────────────────────────────────────
-    // Low precedence so string_content wins inside strings
     comment: ($) => token(prec(-2, seq("#", /[^\n]*/))),
 
     // ── Visibility ────────────────────────────────────────────────
@@ -75,6 +77,45 @@ module.exports = grammar({
         $.alias_statement,
         $.use_statement,
         $.attribute_declaration,
+        $._expression,
+      ),
+
+    // ── Protocol definition ───────────────────────────────────────
+    protocol_definition: ($) =>
+      seq(
+        optional($.visibility_modifier),
+        "protocol",
+        field("name", $.module_path),
+        "{",
+        repeat($.protocol_function_signature),
+        "}",
+      ),
+
+    protocol_function_signature: ($) =>
+      seq(
+        "fn",
+        field("name", $.identifier),
+        "(",
+        optional($.parameter_list),
+        ")",
+        optional(seq("->", field("return_type", $.type_expression))),
+      ),
+
+    // ── Impl definition ───────────────────────────────────────────
+    impl_definition: ($) =>
+      seq(
+        optional($.visibility_modifier),
+        "impl",
+        field("protocol", $.module_path),
+        "for",
+        field("target", $.module_path),
+        "{",
+        repeat(choice(
+          $.function_definition,
+          $.macro_definition,
+          $.attribute_declaration,
+        )),
+        "}",
       ),
 
     // ── Function definitions ──────────────────────────────────────
@@ -103,7 +144,6 @@ module.exports = grammar({
             $.identifier,
             "if",
             "cond",
-            "with",
             "and",
             "or",
             "fn",
@@ -216,23 +256,21 @@ module.exports = grammar({
 
     // ── Attribute declarations ────────────────────────────────────
     attribute_declaration: ($) =>
-      seq(
+      prec.dynamic(1, seq(
         "@",
         field("name", $.identifier),
         optional(
           choice(
-            // Typed: @name :: Type = value
             seq(
               "::",
               field("type", $.type_expression),
               "=",
               field("value", $._expression),
             ),
-            // Untyped: @name = value
             seq("=", field("value", $._expression)),
           ),
         ),
-      ),
+      )),
 
     // ── Use statement ─────────────────────────────────────────────
     use_statement: ($) =>
@@ -290,24 +328,11 @@ module.exports = grammar({
 
     type_name: ($) =>
       choice(
-        "i8",
-        "i16",
-        "i32",
-        "i64",
-        "u8",
-        "u16",
-        "u32",
-        "u64",
-        "f16",
-        "f32",
-        "f64",
-        "isize",
-        "usize",
-        "Bool",
-        "String",
-        "Atom",
-        "Nil",
-        "Never",
+        "i8", "i16", "i32", "i64",
+        "u8", "u16", "u32", "u64",
+        "f16", "f32", "f64",
+        "isize", "usize",
+        "Bool", "String", "Atom", "Nil", "Never",
       ),
 
     type_variable: ($) => $.identifier,
@@ -327,7 +352,7 @@ module.exports = grammar({
     function_type: ($) =>
       seq(
         "(",
-        optional(seq(commaSep1($.type_expression), ",")),
+        optional(commaSep1($.type_expression)),
         "->",
         $.type_expression,
         ")",
@@ -425,17 +450,18 @@ module.exports = grammar({
         $.qualified_call,
         $.field_access,
         $.function_reference,
+        $.anonymous_function,
         $.if_expression,
         $.case_expression,
         $.cond_expression,
         $.for_expression,
-        $.with_expression,
         $.quote_expression,
         $.unquote_expression,
         $.unquote_splicing_expression,
         $.panic_expression,
         $.attribute_reference,
         $.intrinsic_call,
+        $.capture_expression,
         $.paren_expression,
       ),
 
@@ -481,7 +507,8 @@ module.exports = grammar({
         '"""',
       ),
 
-    heredoc_content: ($) => token.immediate(prec(1, /[^"\\#]+|"[^"]|""[^"]|#[^{]/)),
+    heredoc_content: ($) =>
+      token.immediate(prec(1, /[^"\\#]+|"[^"]|""[^"]|#[^{]/)),
 
     string_content: ($) => token.immediate(prec(1, /[^"\\#]+|#[^{]/)),
     escape_sequence: ($) => token.immediate(seq("\\", /./)),
@@ -490,10 +517,7 @@ module.exports = grammar({
 
     // ── Sigil ─────────────────────────────────────────────────────
     sigil: ($) =>
-      seq(
-        $.sigil_name,
-        choice($.string, $.heredoc),
-      ),
+      seq($.sigil_name, choice($.string, $.heredoc)),
 
     sigil_name: ($) => token(seq("~", /[a-zA-Z_][a-zA-Z0-9_]*/)),
 
@@ -520,7 +544,12 @@ module.exports = grammar({
     map_literal: ($) =>
       seq(
         "%{",
-        optional(commaSep1(choice($.map_entry, $.struct_field_value))),
+        optional(
+          seq(
+            optional(seq($._expression, "|")),
+            commaSep1(choice($.map_entry, $.struct_field_value)),
+          ),
+        ),
         "}",
       ),
 
@@ -534,7 +563,12 @@ module.exports = grammar({
         "%",
         field("module", $.module_path),
         "{",
-        optional(commaSep1($.struct_field_value)),
+        optional(
+          seq(
+            optional(seq(field("update", $._expression), "|")),
+            commaSep1($.struct_field_value),
+          ),
+        ),
         "}",
       ),
 
@@ -609,6 +643,23 @@ module.exports = grammar({
         ),
       ),
 
+    // ── Anonymous function ────────────────────────────────────────
+    anonymous_function: ($) =>
+      seq(
+        "fn",
+        "(",
+        optional($.parameter_list),
+        ")",
+        optional(seq("->", field("return_type", $.type_expression))),
+        "{",
+        field("body", optional($.body)),
+        "}",
+      ),
+
+    // ── Capture expression (&Module.func/arity) ──────────────────
+    capture_expression: ($) =>
+      seq("&", $._expression),
+
     // ── Attribute and intrinsic expressions ───────────────────────
     attribute_reference: ($) => seq("@", field("name", $.identifier)),
 
@@ -675,18 +726,6 @@ module.exports = grammar({
         field("body", $._expression),
         "}",
       ),
-
-    with_expression: ($) =>
-      seq(
-        "with",
-        commaSep1($.with_clause),
-        "{",
-        field("body", $.body),
-        "}",
-        optional(seq("else", "{", repeat1($.case_clause), "}")),
-      ),
-
-    with_clause: ($) => seq($._expression, "<-", $._expression),
 
     // ── Quote / Unquote ───────────────────────────────────────────
     quote_expression: ($) => seq("quote", "{", optional($.body), "}"),

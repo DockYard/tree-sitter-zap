@@ -73,6 +73,8 @@
   "->"
   "!"
   "^"
+  "&"
+  "|"
 ] @operator
 
 (comparison_operator) @operator
@@ -96,6 +98,9 @@
 ; Reserved keywords
 [
   "module"
+  "protocol"
+  "impl"
+  "for"
   "struct"
   "union"
   "extends"
@@ -103,8 +108,6 @@
   "else"
   "case"
   "cond"
-  "for"
-  "with"
   "use"
   "quote"
   "unquote"
@@ -141,6 +144,10 @@
 (macro_definition
   name: _ @function.macro)
 
+; Protocol function signatures
+(protocol_function_signature
+  name: (identifier) @function)
+
 ; Function calls
 (function_call
   name: (identifier) @function.call)
@@ -148,6 +155,15 @@
   name: (identifier) @function.call)
 (qualified_call
   name: (module_name) @function.call)
+
+; Test framework — describe/test as keywords, assert/reject/setup/teardown as builtins
+(function_call
+  name: ((identifier) @keyword
+    (#any-of? @keyword "describe" "test")))
+
+(function_call
+  name: ((identifier) @function.builtin
+    (#any-of? @function.builtin "assert" "reject" "setup" "teardown")))
 
 ; Type annotations
 (type_name) @type.builtin
@@ -195,6 +211,10 @@
 (function_reference
   name: (identifier) @function)
 
+; Capture operator
+(capture_expression
+  "&" @operator)
+
 ; Sigils — string sigils
 (sigil
   (sigil_name) @string @_sigil_name
@@ -208,6 +228,10 @@
 ; For comprehension variable
 (for_expression
   variable: (identifier) @variable)
+
+; Anonymous function keyword
+(anonymous_function
+  "fn" @keyword.function)
 
 ; Wildcard
 (wildcard) @variable.builtin
